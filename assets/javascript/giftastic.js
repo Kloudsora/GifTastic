@@ -3,13 +3,15 @@ var dogs = ['Chihuahua', 'Husky', 'Pug', 'Corgi', 'Golden Retreiver'];
 
 // function for displaying dogs as buttons
 function renderButtons(){ 
+	//This method removes  child (and other descendant) elements and  text within the set of matched elements. 
 	$('#dogGifs').empty();
+	//start for loop to display buttons
 	for (var i = 0; i < dogs.length; i++){
-		var a = $('<button>').attr('type', 'button').addClass('btn btn-default');
-		a.addClass('dogs');
-		a.attr('data-name', dogs[i]);
-		a.text(dogs[i]);
-		$('#dogGifs').prepend(a);
+		var pupper = $('<button>').attr('type', 'button').addClass('btn btn-default');
+		pupper.addClass('dogs');
+		pupper.attr('data-name', dogs[i]);
+		pupper.text(dogs[i]);
+		$('#dogGifs').prepend(pupper);
 	}	
 };
 
@@ -30,11 +32,6 @@ $('#addDog').on('click', function(){
 	return false;
 });
 
-$("#dog-input").keyup(function(event){
-    if(event.keyCode == 13){
-        $("#addDog").click();
-    }
-});
 
 // Pause or play on click function
 $(".gifParent").on("click", ".gif", function() {
@@ -52,7 +49,7 @@ $(".gifParent").on("click", ".gif", function() {
 
 // function that pulls the giphy API and images
 function renderFunction(dog){
-	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + dog + "&limit=10&api_key=dc6zaTOxFJmzC";
+	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + dog + "&limit=12&api_key=4Qo4Kuh6RgHbQx2vOYvaOUvoDKEqF8ju";
 	$.ajax({
 		url: queryURL,
 		method: "GET"		
@@ -62,7 +59,7 @@ function renderFunction(dog){
 		console.log(response);
 
 		for (var i = 0; i < response.data.length; i++) {
-			var container = $("<div>").addClass("gifParent col-sm-6");
+			var container = $("<div>").addClass("gifParent col-sm-6 col-lg-3");
 			var dogImage = $("<img>").addClass("img-rounded img-responsive");
 			var rating = $("<p>").text("rating: " + response.data[i].rating);
 			configImg(response.data[i], dogImage);
