@@ -1,86 +1,60 @@
-<!DOCTYPE <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>GIFTASTIC</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.js"
-  integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA="
-  crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript"> </script>
-
+	<title>Dog Gifs</title>
+	<!-- css/bootstrap/font links-->
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 
 <body>
-?
-           
-             <!-- STEP ONE: Open this file in the browser and click on the buttons. Watch what happens -->
-             <!-- STEP TWO: between the dashed lines below
-                     * add three more buttons
-                     * add a data-person attribute of famous people you know
-                     * with a quote said by them -->
-         
-             <!-- **************************************** -->
-             <button data-person="michael biehn">
-               GAME OVER MAN
-             </button>
-             <!-- YOUR BUTTONS GO HERE!!!!!! Delete this comment and put your buttons here.  -->
-             <button data-person="sigourney weaver">
-               nuke the entire site from orbit
-             </button>
-             <!-- **************************************** -->
-             <button data-person="jude law">
-               I told you -- I timed it perfectly!
-             </button>
-         <div id=firstdiv>FIRST</div>
-           <div id=seconddiv>SECOND</div>
-           <div id=thirddiv>THIRD</div>
-           <div id=fourthdiv>FOURTH</div>
-             <!-- STEP THREE: open this file in the browser and click on your buttons. If they don't work, then fix your buttons -->
-         
-             <!-- STEP FOUR: go over the JavaScript with your partners, and explain the lines of code to each other. -->
-         
-           </div>
-         
-           <div id="gifs-appear-here">
-           </div>
-         
-           <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-           <script type="text/javascript">
-             $("button").on("click", function() {
-               var person = $(this).attr("data-person");
-               var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-                 person + "&api_key=dc6zaTOxFJmzC&limit=10";
-         
-               $.ajax({
-                 url: queryURL,
-                 method: "GET"
-               })
-                 .then(function(response) {
-                   var results = response.data;
-         
-                   for (var i = 0; i < results.length; i++) {
-                     var gifDiv = $("<div>");
-         
-                     var rating = results[i].rating;
-         
-                     var p = $("<p>").text("Rating: " + rating);
-         
-                     var personImage = $("<img>");
-                     personImage.attr("src", results[i].images.fixed_height_small.url);
-         
-                     gifDiv.prepend(p);
-                     gifDiv.prepend(personImage);
-         
-                     $("#firstdiv").prepend(gifDiv);
-                   }
-                 });
-             });
-           </script>
-         </body>
-         
-         </html>
-         
+	<!-- jumbo -->
+	<div class="container">
+		<br>
+ 		<div class="jumbotron">
+    		<h1>Doggo Gifs</h1>
+    		<br>   		
+  			<div class="row">
+  				<div class="col-lg-2"></div>
+  				<div class="col-lg-8">
+
+    				<!-- search input with submit button-->
+    				<div class="input-group">
+      					<input type="text" id="dog-input" class="form-control" placeholder="Find Gifs of your favorite dog!">
+
+      						<span class="input-group-btn">
+        						<button id="addDog" class="btn btn-default" type="button">search</button>
+      						</span>
+    				</div>
+  				</div>
+				<div class="col-lg-2"></div>
+			</div>
+  		</div>
+	</div>
+	
+	
+	<!-- gifs from dogGifs will be stationed here -->
+	<div class="row">
+		<div class="col-lg-1"></div>
+
+		<div class="col-lg-10" align="center">
+			<div id="dogGifs"></div>
+			
+			<div class="gifParent" id="images"></div>
+		</div>
+
+		<div class="col-lg-1"></div>
+	</div>
+	
+
+
+
+    <!-- jquery/ modal bootstrap/ js links -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="assets/javascript/giftastic.js"></script>
+
+</body>
+</html>
