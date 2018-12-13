@@ -1,1 +1,86 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>GIFTASTIC</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.js"
+  integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA="
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript"> </script>
 
+</head>
+
+<body>
+?
+           
+             <!-- STEP ONE: Open this file in the browser and click on the buttons. Watch what happens -->
+             <!-- STEP TWO: between the dashed lines below
+                     * add three more buttons
+                     * add a data-person attribute of famous people you know
+                     * with a quote said by them -->
+         
+             <!-- **************************************** -->
+             <button data-person="michael biehn">
+               GAME OVER MAN
+             </button>
+             <!-- YOUR BUTTONS GO HERE!!!!!! Delete this comment and put your buttons here.  -->
+             <button data-person="sigourney weaver">
+               nuke the entire site from orbit
+             </button>
+             <!-- **************************************** -->
+             <button data-person="jude law">
+               I told you -- I timed it perfectly!
+             </button>
+         <div id=firstdiv>FIRST</div>
+           <div id=seconddiv>SECOND</div>
+           <div id=thirddiv>THIRD</div>
+           <div id=fourthdiv>FOURTH</div>
+             <!-- STEP THREE: open this file in the browser and click on your buttons. If they don't work, then fix your buttons -->
+         
+             <!-- STEP FOUR: go over the JavaScript with your partners, and explain the lines of code to each other. -->
+         
+           </div>
+         
+           <div id="gifs-appear-here">
+           </div>
+         
+           <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+           <script type="text/javascript">
+             $("button").on("click", function() {
+               var person = $(this).attr("data-person");
+               var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+                 person + "&api_key=dc6zaTOxFJmzC&limit=10";
+         
+               $.ajax({
+                 url: queryURL,
+                 method: "GET"
+               })
+                 .then(function(response) {
+                   var results = response.data;
+         
+                   for (var i = 0; i < results.length; i++) {
+                     var gifDiv = $("<div>");
+         
+                     var rating = results[i].rating;
+         
+                     var p = $("<p>").text("Rating: " + rating);
+         
+                     var personImage = $("<img>");
+                     personImage.attr("src", results[i].images.fixed_height_small.url);
+         
+                     gifDiv.prepend(p);
+                     gifDiv.prepend(personImage);
+         
+                     $("#firstdiv").prepend(gifDiv);
+                   }
+                 });
+             });
+           </script>
+         </body>
+         
+         </html>
+         
